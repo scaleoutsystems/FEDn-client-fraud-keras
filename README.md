@@ -1,11 +1,15 @@
 # FEDn-client-fraud-keras
-This repository contains an example client (and compute package and seed file) for FEDn training of a keras model for fraud testing using dataset from https://www.kaggle.com/mlg-ulb/creditcardfraud.  
+This repository contains an example client (and compute package and seed file) for FEDn training of a keras model for 
+fraud testing using dataset from https://www.kaggle.com/mlg-ulb/creditcardfraud.  
 
-The credit card transaction dataset is evenly divided (IID) into 10 clients (but this can be easily modified). The clients train the model locally one epoch in every round with a batch size of 32, using the Adam optimizer with learning rate 0.001 and usign pre-processed image augmentation -- random crop with padding 4 and horizontal flip.
+The credit card transaction dataset is evenly divided (IID) into 10 clients (but this can be easily modified). 
+The clients train the autoencoder model locally one epoch in every round with a batch size of 32, using the Adam 
+optimizer.
 
 ## Prepare the client configuration
 
-To attach to a FEDn network, first edit 'fedn-network.yaml' to set the endpoint for the controller/reducer. Then edit 'extra-hosts.yaml' to provice dns resolution for each combiner in the FEDn network (cpu version).
+To attach to a FEDn network, first edit 'fedn-network.yaml' to set the endpoint for the controller/reducer. 
+Then edit 'extra-hosts.yaml' to provide dns resolution for each combiner in the FEDn network (cpu version).
 
 If you first need to deploy a FEDn network, follow the instructions here: https://github.com/scaleoutsystems/fedn 
 
