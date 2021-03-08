@@ -1,6 +1,7 @@
+
 version: '3.3'
 services:
-  client:
+  client1:
     environment:
       - GET_HOSTS_FROM=dns
     image: "fraud-client:latest"
@@ -10,10 +11,34 @@ services:
     command: /bin/bash -c "fedn run client -in fedn-network.yaml"
     volumes:
       - ./data/10clients/client0:/app/data
+    extra_hosts:
+      combiner: 13.48.78.195
+      reducer: 13.48.78.195
 
-networks:
-  default:
-    external:
-      name: fedn_default
-
+  client2:
+    environment:
+      - GET_HOSTS_FROM=dns
+    image: "fraud-client:latest"
+    build:
+      context: .
+    working_dir: /app
+    command: /bin/bash -c "fedn run client -in fedn-network.yaml"
+    volumes:
+      - ./data/10clients/client1:/app/data
+    extra_hosts:
+      combiner: 13.48.78.195
+      reducer: 13.48.78.195
+  client3:
+    environment:
+      - GET_HOSTS_FROM=dns
+    image: "fraud-client:latest"
+    build:
+      context: .
+    working_dir: /app
+    command: /bin/bash -c "fedn run client -in fedn-network.yaml"
+    volumes:
+      - ./data/10clients/client2:/app/data
+    extra_hosts:
+      combiner: 13.48.78.195
+      reducer: 13.48.78.195
 
