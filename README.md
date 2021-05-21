@@ -9,7 +9,7 @@ optimizer.
 
 To prepare the dataset:
 
-    $ pyton load_dataset.py 
+    $ python load_dataset.py 
     
 This stages the full dataset in the file 'data.csv', and creates random partitions in data/10clients/ . 
 
