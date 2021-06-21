@@ -1,9 +1,11 @@
 import os
+import sys
 import pandas as pd
 from math import floor
 
 
 def import_data(test_ratio):
+    """ Download data. """
     data = pd.read_csv('https://query.data.world/s/culciexydc2njqbyaqxayl7rleyhwf')
     data = data.sample(frac=1).reset_index(drop=True)
     data.to_csv("data.csv", index=False)
@@ -24,7 +26,10 @@ def splitset(dataset, parts):
 
 if __name__ == '__main__':
 
-    nr_of_datasets = 10
+    if len(sys.argv) < 2:
+        nr_of_datasets = 10
+    else:
+        nr_of_datasets = sys.argv[1]
 
     trainset, testset = import_data(0.1)
     trainsets = splitset(trainset, nr_of_datasets)
@@ -32,11 +37,11 @@ if __name__ == '__main__':
 
     if not os.path.exists('data'):
         os.mkdir('data')
-    if not os.path.exists('data/{}clients'.format(nr_of_datasets)):
-        os.mkdir('data/{}clients'.format(nr_of_datasets))
+    if not os.path.exists('data/clients'):
+        os.mkdir('data/clients')
 
     for i in range(nr_of_datasets):
-        if not os.path.exists('data/{}clients/client'.format(nr_of_datasets) + str(i)):
-            os.mkdir('data/{}clients/client'.format(nr_of_datasets) + str(i))
-        trainsets[i].to_csv('data/{}clients/client'.format(nr_of_datasets) + str(i)+'/train.csv', index=False)
-        testsets[i].to_csv('data/{}clients/client'.format(nr_of_datasets) + str(i) + '/test.csv', index=False)
+        if not os.path.exists('data/clients/{}'.format(str(i))):
+            os.mkdir('data/clients/{}'.format(str(i)))
+        trainsets[i].to_csv('data/clients/{}'.format(str(i)) + '/train.csv', index=False)
+        testsets[i].to_csv('data/clients/{}'.format(str(i)) + '/test.csv', index=False)

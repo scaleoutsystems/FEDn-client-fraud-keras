@@ -10,35 +10,5 @@ services:
     working_dir: /app
     command: /bin/bash -c "fedn run client -in fedn-network.yaml"
     volumes:
-      - ./data/10clients/client0:/app/data
-    extra_hosts:
-      combiner: 13.48.78.195
-      reducer: 13.48.78.195
-
-  client2:
-    environment:
-      - GET_HOSTS_FROM=dns
-    image: "fraud-client:latest"
-    build:
-      context: .
-    working_dir: /app
-    command: /bin/bash -c "fedn run client -in fedn-network.yaml"
-    volumes:
-      - ./data/10clients/client1:/app/data
-    extra_hosts:
-      combiner: 13.48.78.195
-      reducer: 13.48.78.195
-  client3:
-    environment:
-      - GET_HOSTS_FROM=dns
-    image: "fraud-client:latest"
-    build:
-      context: .
-    working_dir: /app
-    command: /bin/bash -c "fedn run client -in fedn-network.yaml"
-    volumes:
-      - ./data/10clients/client2:/app/data
-    extra_hosts:
-      combiner: 13.48.78.195
-      reducer: 13.48.78.195
+      - ./data/clients/0:/app/data
 

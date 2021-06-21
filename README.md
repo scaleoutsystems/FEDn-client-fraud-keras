@@ -11,5 +11,5 @@ To prepare the dataset:
 
     $ python load_dataset.py 
     
-This stages the full dataset in the file 'data.csv', and creates random partitions in data/10clients/ . 
+This stages the full dataset in the file 'data.csv', and creates random partitions in data/clients/ . 
 
