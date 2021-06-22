@@ -13,3 +13,14 @@ To download and prepare the partitioned dataset:
     
 This downloads the full dataset into the file 'data.csv', and creates random partitions in data/clients/.
 
+## Start a client 
+
+Clone this repository and then download the client.yaml config file from the FEDn UI (Network view) and copy it into the main repostitory folder. 
+
+To build the client environment: 
+    
+    $ docker build . 
+    
+To start a client: 
+
+     $ docker run -it -v $(pwd)/data/client/0:/app/data -v $(pwd)/client.yaml:/app/client.yaml fraud-client:latest fedn run client -in client.yaml
