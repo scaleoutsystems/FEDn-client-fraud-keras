@@ -21,6 +21,6 @@ To build the client environment:
     
     $ docker build . 
     
-To start a client: 
+To start a client (using docker): 
 
-     $ run -it -v $(pwd)/data/clients/0:/app/data -v $(pwd)/client.yaml:/app/client.yaml fraud-client:latest fedn run client -in client.yaml
+     $ docker run -it -v $(pwd)/data/clients/0:/app/data -v $(pwd)/client.yaml:/app/client.yaml fraud-client:latest fedn run client -in client.yaml
