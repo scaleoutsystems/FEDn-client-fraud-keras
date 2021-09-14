@@ -19,7 +19,7 @@ Clone this repository and then download the client.yaml config file from the FED
 
 To build the client environment: 
     
-    $ docker build . 
+    $ docker build . -t fraud-client:latest
     
 To start a client (using Docker): 
 
